@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "npx parcel src/index.html",
+    "build": "npx parcel build src/index.html --no-source-maps --public-url ./"
+  },
+  "dependencies": {
+    "bitfield": "^4.1.0",
+    "parcel": "^2.7.0"
+  }
+}

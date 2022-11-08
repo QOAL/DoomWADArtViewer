@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>DOOM WAD Thingy</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet"> 
+		<script src="index.js" type="module"></script>
+		<meta name="theme-color" content="#c00000">
+	</head>
+	<body>
+		<select size="100" id="dirList"></select>
+		<div id="output">
+			<canvas></canvas>
+			<div id="bottomBar">
+				<div class="inputCont">Colour Palette: <input type="number" min="0" max="0" step="1" value="0" id="paletteInput" /></div>
+				<div class="inputCont">Brightness: <input type="number" min="0" max="0" step="1" value="0" id="colmapInput" /></div>
+				<div id="imgInfo">
+					<div>Image Dimensions: <span>? x ?</span></div>
+					<div>Offset: <span>? x ?</span></div>
+				</div>
+			</div>
+		</div>
+		<div id="noWAD">
+			<label for="wadPicker" tabindex="0">
+				<input id="wadPicker" type="file" tabindex="-1">
+				<p>Drag &amp; Drop a valid WAD file to get started</p>
+				<p><small>(You can click for a file picker too)</small></p>
+			</label>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,272 @@
+:root {
+	--primary: #c00000;
+	--secondary: #202020;
+}
+body, html {
+	min-height: 100vh;
+	max-height: 100vh;
+}
+body {
+	font-family: 'Lato', sans-serif;
+	color: #d0d0d0;
+	background: #181818;
+	display: flex;
+	flex-direction: row;
+	font-size: large;
+	margin: 0;
+	overflow: hidden;
+
+	-webkit-tap-highlight-color: transparent;
+}
+::selection { background: transparent }
+input::selection {
+	background: var(--primary);
+	color: var(--secondary);
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #181818;
+}
+::-webkit-scrollbar-thumb {
+    background: #606060;
+}
+input, button, textarea {
+	outline: none;
+}
+input[type="text"], input[type="number"], input[type="color"] {
+	padding: 5px;
+	font: inherit;
+	border-radius: 2.5px;
+	border: none;
+	background-color: #404040;
+	color: #fff;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+	appearance: textfield;
+
+	font-variant-numeric: tabular-nums;
+}
+input:invalid {
+	background-color: #863031;
+}
+input[type="text"]:hover, input[type="number"]:hover, label:hover, input[type="color"]:hover {
+	box-shadow: inset 0 -3px 0 0 rgba(255,255,255,.333);
+}
+input[type="text"]:focus, input[type="number"]:focus, label:focus, label:focus-within, input[type="color"]:focus {
+	box-shadow: inset 0 -3px 0 0 var(--primary);
+}
+input[type="radio"], input[type="checkbox"] {
+	opacity: 0;
+	margin: 0 0 0 .7rem;
+}
+input[type="radio"] + span, input[type="checkbox"] + span {
+	--radioRingCol: currentColor;
+	--radioCheckCol: currentColor;/*transparent;*/
+}
+input[type="radio"]:checked + span, input[type="checkbox"]:checked + span {
+	--radioRingCol: var(--primary);
+	--radioCheckCol: var(--primary);
+}
+input[type="radio"] + span::before, input[type="checkbox"] + span::before {
+	content: "";
+	position: absolute;
+	border: 2px solid var(--radioRingCol);
+	width: .8rem;
+	height: .8rem;
+	left: 10px;
+	top: calc(50% - .4rem);
+	border-radius: 50%;
+	transition: border-color .2s ease-in-out;
+}
+input[type="radio"] + span::after, input[type="checkbox"] + span::after {
+	content: "";
+	position: absolute;
+	background-color: var(--radioCheckCol);
+	width: .8rem;
+	height: .8rem;
+	left: 12px;
+	top: calc(50% - .4rem + 2px);
+	border-radius: 50%;
+	transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+	transform: scale(0);
+}
+input[type="checkbox"] + span::before {
+	top: calc(50% - .5rem);
+	border-radius: 2.5px;
+}
+input[type="checkbox"] + span::after {
+	top: calc(50% - .5rem + 2px);
+	border-radius: 0%;
+}
+input[type="radio"]:not(:checked):hover + span::after, input[type="checkbox"]:not(:checked):hover + span::after {
+	transform: scale(.5);
+}
+input[type="radio"]:checked + span::after, input[type="checkbox"]:checked + span::after {
+	transform: scale(1);
+}
+select {
+	/*padding: 5px;*/
+	padding: 2px 5px;
+	color: #f0f0f0;
+	font-size: large;
+	border-radius: 2.5px;
+	border: 3px solid transparent;
+	cursor: pointer;
+	background-color: #404040;
+	outline: none;
+	min-width: 0;
+}
+select:hover, select:focus {
+	border-color: #808080;
+}
+select:active, select:focus-within {
+	background-color: #404040;
+	border-color: var(--primary)
+}
+label {
+	padding: 5px 15px 5px 10px;
+	border-radius: 2.5px;
+	background-color: #404040;
+	color: #fff;
+	position: relative;
+}
+label:not(:first-of-type) { margin-left: 15px; }
+label input { display: inline-block; margin: 0 10px 0 0; }
+input[type="color"] {
+	padding: 3px;
+	width: 100%;
+}
+::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+::-webkit-color-swatch {
+  border-radius: 2.5px;
+  border-style: none;
+}
+::-moz-color-swatch {
+  border-radius: 2.5px;
+  border-style: none;
+}
+
+button {
+	font: inherit;
+	padding: 5px 25px;
+	border-radius: 2.5px;
+	border: none;
+	background-color: #404040;
+	color: #fff;
+	cursor: pointer;
+}
+button:hover, button:focus {
+	box-shadow: inset 0 0 0 3px rgba(255,255,255,.333);
+}
+button:active {
+	box-shadow: inset 0 0 0 3px var(--primary);
+}
+button:active div {
+	transform: translateY(1px);
+}
+
+body::after {
+	content: "Drop file";
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	font-size: xxx-large;
+	color: #fff;
+	background-color: rgba(0,0,0,.5);
+	text-shadow: 1px 1px 0 #000;
+	opacity: 0;
+	display: flex;
+	pointer-events: none;
+	transition: opacity .125s ease-in-out;
+}
+body.dragOver::after {
+	opacity: 1;
+	pointer-events: all;
+}
+
+#dirList {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	padding: 0;
+	flex: 0 0 auto;
+}
+
+canvas {
+	transform: scale(3);
+	transform-origin: top left;
+	image-rendering: pixelated;
+	padding: 10px;
+	transition: background-color 250ms ease-in-out;
+}
+canvas:hover, canvas:focus {
+	background-color: #fff;
+}
+#noWAD {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #181818;
+}
+#noWAD.ok {
+	display: none;
+}
+#noWAD label {
+	height: 100vh;
+	width: 100vw;
+	background: none;
+	border: none;
+	box-shadow: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: x-large;
+}
+#wadPicker {
+	display: none;
+}
+#noWAD p {
+	margin: 0;
+}
+#output {
+	flex: 1;
+	position: relative;
+}
+#bottomBar {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.inputCont {
+	white-space: nowrap;
+}
+#bottomBar input[type="number"] {
+	width: 2rem;
+	text-align: right;
+}
+#imgInfo {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	font-variant-numeric: tabular-nums;
+}
